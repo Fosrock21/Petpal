@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.jumbotron {
+    background-color: #f8f9fa;
+    /* A lighter background for the jumbotron */
+    margin-bottom: 0;
+    /* Remove the default bottom margin from the jumbotron */
+}
+
+.about-image {
+    width: 100%;
+    height: auto;
+    border-radius: 0.25rem;
+    /* Slightly round the corners of the images */
+}
+
+footer {
+    background-color: #505050;
+    /* A darker background for contrast in the footer */
+    color: #ffffff;
+    /* White text color for footer */
+}
+
+.footer-link {
+    color: #dcdcdc;
+    /* Lighter grey for footer links for a subtle look */
+}
+
+.footer-link:hover {
+    color: #ffffff;
+    /* White text color on hover for visibility */
+}
