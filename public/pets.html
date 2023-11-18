@@ -26,16 +26,13 @@
                     html += '</tbody></table>';
                     list.innerHTML = html;
                 })
-                .catch(error => {
-                    console.error('Error fetching pets:', error);
-                });
         };
 
     </script>
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand p-1" href="#">PetPal</a>
+        <a class="navbar-brand p-1" href="index.html">PetPal</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -51,27 +48,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="shelters.html">Shelters</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="about.html">About</a>
-                </li>
             </ul>
         </div>
     </nav>
 
     <div class="container mt-4">
-        <h1>Pets List</h1>
-        <div id="petsList"></div> <!-- Container for the table -->
+        <h1>Pets</h1>
+        <div id="petsList"></div>
     </div>
-
-    <!-- Footer -->
-    <footer class="text-muted">
-        <div class="container">
-            <p class="float-right">
-                <a href="#">Back to top</a>
-            </p>
-            <p>© 2023 PetPal, Inc.</p>
-        </div>
-    </footer>
 
 </body>
 

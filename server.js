@@ -26,11 +26,22 @@ db.connect((err) => {
 app.get('/display-pets', (req, res) => {
     const sqlQuery = 'SELECT * FROM pet';
     db.query(sqlQuery, (err, results) => {
-        if (err) {
-            console.error('Error fetching pets: ', err);
-            res.status(500).send('Error fetching pets');
-            return;
-        }
+        res.json(results);
+    });
+});
+
+// Fetch and display Shelters
+app.get('/display-shelters', (req, res) => {
+    const sqlQuery = 'SELECT * FROM shelter';
+    db.query(sqlQuery, (err, results) => {
+        res.json(results);
+    });
+});
+
+// Fetch and display Application Details
+app.get('/applicationDetails', (req, res) => {
+    const sqlQuery = 'SELECT * FROM View_ApplicationDetails';
+    db.query(sqlQuery, (err, results) => {
         res.json(results);
     });
 });
