@@ -26,6 +26,48 @@
                     html += '</tbody></table>';
                     list.innerHTML = html;
                 })
+            fetch('/Petshelters')
+                .then(response => response.json())
+                .then(view_petshelters => {
+                    const list = document.getElementById('petShelters');
+                    let html = '<table class="table table-striped table-hover table-bordered">';
+                    html += '<thead class="thead-dark"><tr><th>Pet Name</th><th>Pet Type</th><th>Shelter Name</th><th>Location</th><th>Contact Info</th></tr></thead><tbody>';
+                    view_petshelters.forEach(view_petshelters => {
+                        html += `<tr><td>${view_petshelters.PetName}</td><td>${view_petshelters.PetType}</td><td>${view_petshelters.ShelterName}</td><td>${view_petshelters.Location}</td><td>${view_petshelters.ContactInfo}</td></tr>`;
+                    });
+                    html += '</tbody></table>';
+                    list.innerHTML = html;
+                })
+            fetch('/accessoriesForPets')
+                .then(response => response.json())
+                .then(view_AccessoriesForPets => {
+                    const list = document.getElementById('accessoriesForPets');
+                    let html = '<table class="table table-striped table-hover table-bordered">';
+                    html += '<thead class="thead-dark"><tr><th>Pet Type</th><th>Accessory Name</th><th>Price</th></tr></thead><tbody>';
+                    view_AccessoriesForPets.forEach(view_AccessoriesForPets => {
+                        html += `<tr><td>${view_AccessoriesForPets.PetType}</td><td>${view_AccessoriesForPets.AccessoryName}</td><td>${view_AccessoriesForPets.Price}</td></tr>`;
+                    });
+                    html += '</tbody></table>';
+                    list.innerHTML = html;
+                })
+            fetch('/latestApplicationDate')
+                .then(response => response.json())
+                .then(view_PetLatestApplication => {
+                    const list = document.getElementById('latestApplicationDate');
+                    let html = '<table class="table table-striped table-hover table-bordered">';
+                    html += '<thead class="thead-dark"><tr><th>Pet ID</th><th>Pet Name</th><th>Latest Application Date</th></tr></thead><tbody>';
+                    view_PetLatestApplication.forEach(item => {
+                        // Convert the date string into a JavaScript Date object
+                        const dateObject = new Date(item.LatestApplicationDate);
+                        // Format the date as a human-readable string
+                        const formattedDate = dateObject.toLocaleDateString('en-US', {
+                            year: 'numeric', month: 'long', day: 'numeric'
+                        });
+                        html += `<tr><td>${item.PetID}</td><td>${item.Name}</td><td>${formattedDate}</td></tr>`;
+                    });
+                    html += '</tbody></table>';
+                    list.innerHTML = html;
+                })
         };
 
     </script>
@@ -57,6 +99,20 @@
         <div id="petsList"></div>
     </div>
 
+    <div class="container mt-4">
+        <h1>Current Shelter</h1>
+        <div id="petShelters"></div>
+    </div>
+
+    <div class="container mt-4">
+        <h1>Accessories</h1>
+        <div id="accessoriesForPets"></div>
+    </div>
+
+    <div class="container mt-4">
+        <h1>Latest Application Date</h1>
+        <div id="latestApplicationDate"></div>
+    </div>
 </body>
 
 </html>
