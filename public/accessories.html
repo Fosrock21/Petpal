@@ -1,0 +1,99 @@
+<html>
+
+<head>
+    <title>
+        PetPal - A Pet Adoption Platform
+    </title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+</head>
+
+<body>
+    <script>
+        window.onload = function () {
+            fetch('/accessoriesForPets')
+                .then(response => response.json())
+                .then(accessories => {
+                    const list = document.getElementById('accessoriesForPets');
+                    let html = '<table class="table table-striped table-hover">';
+                    html += '<thead class="table-dark"><tr><th>Pet Type</th><th>Accessory Name</th><th>Price</th></tr></thead><tbody>';
+                    accessories.forEach(accessory => {
+                        html += `<tr><td>${accessory.PetType}</td><td>${accessory.AccessoryName}</td><td>${accessory.Price}</td></tr>`;
+                    });
+                    html += '</tbody></table>';
+                    list.innerHTML = html;
+                });
+            fetch('/completePetAccessoryInfo')
+                .then(response => response.json())
+                .then(View_CompletePetAccessoryInfo => {
+                    const list = document.getElementById('completePetAccessoryInfo');
+                    let html = '<table class="table table-striped table-hover table-bordered">';
+                    html += '<thead class="thead-dark"><tr><th>Pet ID</th><th>Pet Name</th><th>Accessory ID</th><th>Accessory Name</th></tr></thead><tbody>';
+                    View_CompletePetAccessoryInfo.forEach(View_CompletePetAccessoryInfo => {
+                        html += `<tr><td>${View_CompletePetAccessoryInfo.PetID}</td><td>${View_CompletePetAccessoryInfo.PetName}</td><td>${View_CompletePetAccessoryInfo.AccessoryID}</td><td>${View_CompletePetAccessoryInfo.AccessoryName}</td></tr>`;
+                    });
+                    html += '</tbody></table>';
+                    list.innerHTML = html;
+                })
+            fetch('/availableAndUnavailableAccessories')
+                .then(response => response.json())
+                .then(View_AvailableAndUnavailableAccessories => {
+                    const list = document.getElementById('availableAndUnavailableAccessories');
+                    let html = '<table class="table table-striped table-hover table-bordered">';
+                    html += '<thead class="thead-dark"><tr><th>Name</th><th>Availability Status</th></tr></thead><tbody>';
+                    View_AvailableAndUnavailableAccessories.forEach(View_AvailableAndUnavailableAccessories => {
+                        html += `<tr><td>${View_AvailableAndUnavailableAccessories.Name}</td><td>${View_AvailableAndUnavailableAccessories.AvailabilityStatus}</td></tr>`;
+                    });
+                    html += '</tbody></table>';
+                    list.innerHTML = html;
+                })
+        };
+
+    </script>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand p-1" href="index.html">PetPal</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pets.html">Pets</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="shelters.html">Shelters</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="adoption.html">Adoption</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="accessories.html">Accessories</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1>Pet Accessory Info</h1>
+        <div id="completePetAccessoryInfo"></div>
+    </div>
+    <div class="container mt-4">
+        <h1>Available Accessories</h1>
+        <div id="availableAndUnavailableAccessories"></div>
+    </div>
+    <div class="container mt-4">
+        <h1>Accessories</h1>
+        <div id="accessoriesForPets"></div>
+    </div>
+
+</body>
+
+</html>

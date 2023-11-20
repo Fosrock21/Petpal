@@ -38,6 +38,59 @@ app.get('/display-shelters', (req, res) => {
     });
 });
 
+
+// Fetch and display a complete overview of adoption applications(view1)
+app.get('/applicationDetails', (req, res) => {
+    const sqlQuery = 'SELECT * FROM view_ApplicationDetails';
+    db.query(sqlQuery, (err, results) => {
+        res.json(results);
+    });
+});
+
+// Fetch and display user who has applied for a pet adoption and indicates
+//whether they have a subscription to the newsletter(view2)
+app.get('/userApplicationNewsletterMatch', (req, res) => {
+    const sqlQuery = 'SELECT * FROM view_userapplicationnewslettermatch';
+    db.query(sqlQuery, (err, results) => {
+        res.json(results);
+    });
+});
+
+// Fetch and display the pet and their latest aplication date(view3)
+app.get('/latestApplicationDate', (req, res) => {
+    const sqlQuery = 'SELECT * FROM view_PetLatestApplication';
+    db.query(sqlQuery, (err, results) => {
+        res.json(results);
+    });
+});
+
+
+// Fetch and display pets and the accessories they may have(view4)
+app.get('/completePetAccessoryInfo', (req, res) => {
+    const sqlQuery = 'SELECT * FROM view_CompletePetAccessoryInfo';
+    db.query(sqlQuery, (err, results) => {
+        res.json(results);
+    });
+});
+
+
+// Fetch and display accessories and indicate their availability status. (view5)
+app.get('/availableAndUnavailableAccessories', (req, res) => {
+    const sqlQuery = 'SELECT * FROM view_AvailableAndUnavailableAccessories';
+    db.query(sqlQuery, (err, results) => {
+        res.json(results);
+    });
+});
+
+
+// Fetch and display Users and Their Pet Preferences(view6)
+app.get('/userPreferences', (req, res) => {
+    const sqlQuery = 'SELECT * FROM view_userpreferences';
+    db.query(sqlQuery, (err, results) => {
+        res.json(results);
+    });
+});
+
 // Fetch and display Adoption Status(view7)
 app.get('/adoptionStatus', (req, res) => {
     const sqlQuery = 'SELECT * FROM view_adoptionstatus';
@@ -54,6 +107,7 @@ app.get('/Petshelters', (req, res) => {
     });
 });
 
+
 // Fetch and display Accessory Availability by Pet Type(view9)
 app.get('/accessoriesForPets', (req, res) => {
     const sqlQuery = 'SELECT * FROM view_AccessoriesForPets';
@@ -62,17 +116,9 @@ app.get('/accessoriesForPets', (req, res) => {
     });
 });
 
-// Fetch and display the pet and their latest aplication date(view3)
-app.get('/latestApplicationDate', (req, res) => {
-    const sqlQuery = 'SELECT * FROM view_PetLatestApplication';
-    db.query(sqlQuery, (err, results) => {
-        res.json(results);
-    });
-});
-
-// Fetch and display Users and Their Pet Preferences(view6)
-app.get('/userPreferences', (req, res) => {
-    const sqlQuery = 'SELECT * FROM view_userpreferences';
+//view 10 shows users who recived a notification
+app.get('/notificationSubscriptionMatch', (req, res) => {
+    const sqlQuery = 'SELECT * FROM view_NotificationSubscriptionMatch';
     db.query(sqlQuery, (err, results) => {
         res.json(results);
     });
