@@ -36,6 +36,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="accessories.html">Accessories</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="locations.html">Locations</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -90,6 +93,11 @@
 
     <!-- JavaScript for Fetching and Displaying Data -->
     <script>
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return new Intl.DateTimeFormat('en-US').format(date);
+        }
+
         window.onload = function () {
             // Fetch and display application details
             fetch('/applicationDetails')
@@ -99,7 +107,8 @@
                     let html = '<table class="table table-striped table-hover">';
                     html += '<thead class="table-dark"><tr><th>User ID</th><th>User Name</th><th>Pet Name</th><th>Pet Type</th><th>Application Date</th><th>Status</th></tr></thead><tbody>';
                     data.forEach(detail => {
-                        html += `<tr><td>${detail.UserID}</td><td>${detail.UserName}</td><td>${detail.PetName}</td><td>${detail.PetType}</td><td>${detail.ApplicationDate}</td><td>${detail.Status}</td></tr>`;
+                        let formattedDate = formatDate(detail.ApplicationDate);
+                        html += `<tr><td>${detail.UserID}</td><td>${detail.UserName}</td><td>${detail.PetName}</td><td>${detail.PetType}</td><td>${formattedDate}</td><td>${detail.Status}</td></tr>`;
                     });
                     html += '</tbody></table>';
                     list.innerHTML = html;
@@ -127,7 +136,9 @@
                     let html = '<table class="table table-striped table-hover">';
                     html += '<thead class="table-dark"><tr><th>User ID</th><th>Notification Date</th><th>Subscription Date</th></tr></thead><tbody>';
                     data.forEach(match => {
-                        html += `<tr><td>${match.UserID}</td><td>${match.NotificationDate}</td><td>${match.SubscriptionDate}</td></tr>`;
+                        let formattedNotificationDate = formatDate(match.NotificationDate);
+                        let formattedSubscriptionDate = formatDate(match.SubscriptionDate);
+                        html += `<tr><td>${match.UserID}</td><td>${formattedNotificationDate}</td><td>${formattedSubscriptionDate}</td></tr>`;
                     });
                     html += '</tbody></table>';
                     list.innerHTML = html;

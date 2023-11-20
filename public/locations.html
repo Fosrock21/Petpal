@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetPal - A Pet Adoption Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.css">
+    <style>
+        .map-container {
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+        <a class="navbar-brand" href="index.html">PetPal</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pets.html">Pets</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="shelters.html">Shelters</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="adoption.html">Adoption</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="accessories.html">Accessories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="locations.html">Locations</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <h5>Happy Paws</h5>
+                <div id="map1" class="map-container mb-3"></div>
+            </div>
+            <div class="col-md-6">
+                <h5>Furry Friends</h5>
+                <div id="map2" class="map-container mb-3"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h5>Birds of a Feather</h5>
+                <div id="map3" class="map-container mb-3"></div>
+            </div>
+            <div class="col-md-6">
+                <h5>Fishy Waters</h5>
+                <div id="map4" class="map-container mb-3"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h5>Reptile Retreat</h5>
+                <div id="map5" class="map-container mb-3"></div>
+            </div>
+            <div class="col-md-6">
+                <h5>All Animals Welcome</h5>
+                <div id="map6" class="map-container mb-3"></div>
+            </div>
+        </div>
+    </div>
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6oAIBjWtAyBSPV2sN0dVmc4KTFlnhnlE&callback=initMaps">
+        </script>
+
+    <script>
+        function initMaps() {
+            var locations = [
+                { name: "Happy Paws", lat: 40.7128, lng: -74.0060, container: 'map1' },
+                { name: "Furry Friends", lat: 34.0522, lng: -118.2437, container: 'map2' },
+                { name: "Birds of a Feather", lat: 37.7749, lng: -122.4194, container: 'map3' },
+                { name: "Fishy Waters", lat: 42.3601, lng: -71.0589, container: 'map4' },
+                { name: "Reptile Retreat", lat: 41.8781, lng: -87.6298, container: 'map5' },
+                { name: "All Animals Welcome", lat: 32.7767, lng: -96.7970, container: 'map6' }
+            ];
+
+            locations.forEach(function (location) {
+                var mapOptions = {
+                    zoom: 14,
+                    center: new google.maps.LatLng(location.lat, location.lng)
+                };
+
+                var map = new google.maps.Map(document.getElementById(location.container), mapOptions);
+
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(location.lat, location.lng),
+                    map: map,
+                    title: location.name
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>
