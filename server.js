@@ -70,6 +70,14 @@ app.get('/latestApplicationDate', (req, res) => {
     });
 });
 
+// Fetch and display Users and Their Pet Preferences(view6)
+app.get('/userPreferences', (req, res) => {
+    const sqlQuery = 'SELECT * FROM view_userpreferences';
+    db.query(sqlQuery, (err, results) => {
+        res.json(results);
+    });
+});
+
 // Start the server
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
