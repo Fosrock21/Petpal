@@ -10,6 +10,7 @@ app.use(express.json());
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Create a connection to the MySQL database
 const db = mysql.createConnection({
     host: '127.0.0.1',
     user: 'root',
@@ -17,6 +18,7 @@ const db = mysql.createConnection({
     database: 'petpal'
 });
 
+// Connect to the MySQL database
 db.connect((err) => {
     if (err) {
         console.error('Error connecting to the database: ', err);
@@ -31,6 +33,7 @@ app.post('/add-pet', (req, res) => {
     const { name, age, breed, type, healthInfo, shelterID } = req.body;
     const sql = 'INSERT INTO pet (Name, Age, Breed, Type, HealthInfo, ShelterID) VALUES (?, ?, ?, ?, ?, ?)';
     db.query(sql, [name, age, breed, type, healthInfo, shelterID], (err, result) => {
+        // Handle the result of the query here
     });
 });
 

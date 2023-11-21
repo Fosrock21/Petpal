@@ -2,25 +2,34 @@
 <html lang="en">
 
 <head>
+    <!-- Metadata and charset settings for the webpage -->
     <meta charset="UTF-8">
+    <!-- Setting the viewport to scale for all devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the webpage -->
     <title>PetPal - A Pet Adoption Platform</title>
+    <!-- Link to Bootstrap CSS for styling -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Link to Bootstrap Bundle JS for functionality -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
 
-    <!-- Navigation -->
+    <!-- Navigation bar at the top of the page -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
         <div class="container-fluid">
+            <!-- Brand logo/name -->
             <a class="navbar-brand" href="index.html">PetPal</a>
+            <!-- Button for toggling navigation in smaller screens -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <!-- Collapsible content of the navbar -->
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
+                    <!-- Navigation items with links to other pages -->
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                     </li>
@@ -47,14 +56,18 @@
         </div>
     </nav>
 
+    <!-- Main container for content -->
     <div class="container">
+        <!-- Title for the content section -->
         <h2>Add a New Pet</h2>
+        <!-- Form for adding a new pet -->
         <form id="addPetForm">
-            <!-- Pet Information -->
+            <!-- Input fields for pet information -->
             <input type="text" id="name" name="name" placeholder="Pet Name" required>
             <input type="number" id="age" name="age" placeholder="Age" required>
             <input type="text" id="breed" name="breed" placeholder="Breed" required>
             <select id="type" name="type" required>
+                <!-- Select dropdown for pet type -->
                 <option value="">Select Type</option>
                 <option value="Cat">Cat</option>
                 <option value="Dog">Dog</option>
@@ -64,7 +77,7 @@
             </select>
             <input type="text" id="healthInfo" name="healthInfo" placeholder="Health Info" required>
 
-            <!-- Shelter Information -->
+            <!-- Select dropdown for shelter information -->
             <select id="shelterID" name="shelterID" required>
                 <option value="">Select Shelter</option>
                 <option value="1">Happy Paws - New York, NY</option>
@@ -75,13 +88,17 @@
                 <option value="6">All Animals Welcome - Dallas, TX</option>
             </select>
 
+            <!-- Submit button for the form -->
             <button type="submit">Add Pet</button>
         </form>
     </div>
 
+    <!-- JavaScript for handling form submission -->
     <script>
+        // Adding an event listener for form submission
         document.getElementById('addPetForm').addEventListener('submit', function (e) {
             e.preventDefault();
+            // Collecting form data into an object
             const data = {
                 name: document.getElementById('name').value,
                 age: document.getElementById('age').value,
@@ -90,7 +107,7 @@
                 healthInfo: document.getElementById('healthInfo').value,
                 shelterID: document.getElementById('shelterID').value,
             };
-
+            // Making a POST request to the server with the form data
             fetch('/add-pet', {
                 method: 'POST',
                 headers: {
@@ -110,7 +127,7 @@
     </script>
 
 
-
+    <!-- Footer section -->
     <footer class="footer bg-dark text-white mt-4">
         <div class="container text-center py-3">
         </div>

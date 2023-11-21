@@ -2,23 +2,29 @@
 <html lang="en">
 
 <head>
+    <!-- Basic page requirements and metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetPal - A Pet Adoption Platform</title>
+    <!-- Bootstrap CSS for styling -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap JS Bundle for interactive components -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.css">
 </head>
 
 <body>
 
-    <!-- Navigation -->
+    <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
         <a class="navbar-brand" href="index.html">PetPal</a>
+        <!-- Responsive navbar toggler for smaller screens -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <!-- Navbar content with navigation links -->
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -53,7 +59,7 @@
                 <h2 class="card-title">Application Details</h2>
             </div>
             <div class="card-body">
-                <div id="ApplicationDetails"></div>
+                <div id="ApplicationDetails"><!-- Content populated by JavaScript --></div>
             </div>
         </div>
     </div>
@@ -65,7 +71,7 @@
                 <h2 class="card-title">Newsletter Subscribers</h2>
             </div>
             <div class="card-body">
-                <div id="userApplicationNewsletterMatch"></div>
+                <div id="userApplicationNewsletterMatch"><!-- Content populated by JavaScript --></div>
             </div>
         </div>
     </div>
@@ -77,7 +83,7 @@
                 <h2 class="card-title">Notification Date</h2>
             </div>
             <div class="card-body">
-                <div id="notificationSubscriptionMatch"></div>
+                <div id="notificationSubscriptionMatch"><!-- Content populated by JavaScript --></div>
             </div>
         </div>
     </div>
@@ -89,13 +95,14 @@
                 <h2 class="card-title">Adoption Status</h2>
             </div>
             <div class="card-body">
-                <div id="adoptionStatus"></div>
+                <div id="adoptionStatus"><!-- Content populated by JavaScript --></div>
             </div>
         </div>
     </div>
 
     <!-- JavaScript for Fetching and Displaying Data -->
     <script>
+        // Helper function to format date strings
         function formatDate(dateString) {
             const date = new Date(dateString);
             return new Intl.DateTimeFormat('en-US').format(date);
@@ -162,6 +169,8 @@
                 });
         };
     </script>
+
+    <!-- Footer section -->
     <footer class="footer bg-dark text-white mt-4">
         <div class="container text-center py-3">
         </div>

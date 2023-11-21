@@ -2,12 +2,18 @@
 <html lang="en">
 
 <head>
+    <!-- Basic page metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page title -->
     <title>PetPal - A Pet Adoption Platform</title>
+    <!-- Bootstrap CSS for styling -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Bundle JS for interactive components -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.css">
+    <!-- Inline CSS for map container styling -->
     <style>
         .map-container {
             height: 300px;
@@ -16,15 +22,18 @@
 </head>
 
 <body>
-    <!-- Navigation -->
+    <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
         <a class="navbar-brand" href="index.html">PetPal</a>
+        <!-- Responsive navbar toggler for smaller screens -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
+                <!-- List of navigation items -->
                 <li class="nav-item">
                     <a class="nav-link active" href="index.html">Home</a>
                 </li>
@@ -50,8 +59,11 @@
         </div>
     </nav>
 
+    <!-- Main Content Container -->
     <div class="container mt-4">
+        <!-- Row for shelter locations -->
         <div class="row">
+            <!-- Column for each shelter location with map -->
             <div class="col-md-6">
                 <h5>Happy Paws</h5>
                 <div id="map1" class="map-container mb-3"></div>
@@ -85,13 +97,17 @@
         </div>
     </div>
 
+    <!-- Google Maps API Script -->
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6oAIBjWtAyBSPV2sN0dVmc4KTFlnhnlE&callback=initMaps">
         </script>
 
+    <!-- Script for initializing Google Maps -->
     <script>
         function initMaps() {
+            // Array of location objects for the maps
             var locations = [
+                // Location details
                 { name: "Happy Paws", lat: 40.7128, lng: -74.0060, container: 'map1' },
                 { name: "Furry Friends", lat: 34.0522, lng: -118.2437, container: 'map2' },
                 { name: "Birds of a Feather", lat: 37.7749, lng: -122.4194, container: 'map3' },
@@ -100,14 +116,17 @@
                 { name: "All Animals Welcome", lat: 32.7767, lng: -96.7970, container: 'map6' }
             ];
 
+            // Loop through locations to create maps
             locations.forEach(function (location) {
                 var mapOptions = {
                     zoom: 14,
                     center: new google.maps.LatLng(location.lat, location.lng)
                 };
 
+                // Creating a map for each location
                 var map = new google.maps.Map(document.getElementById(location.container), mapOptions);
 
+                // Adding a marker to each map
                 var marker = new google.maps.Marker({
                     position: new google.maps.LatLng(location.lat, location.lng),
                     map: map,
@@ -116,10 +135,13 @@
             });
         }
     </script>
+
+    <!-- Footer Section -->
     <footer class="footer bg-dark text-white mt-4">
         <div class="container text-center py-3">
         </div>
     </footer>
+
 </body>
 
 </html>
