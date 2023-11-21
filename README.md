@@ -53,7 +53,7 @@ A step-by-step series of examples that tell you how to get a development environ
 ### Running the application
 Open your web browser and go to http://localhost:3000. You should now be able to interact with the PetPal platform.
 
-### Running the application
+### Built With
 - Node.js - The backend framework used
 - Express - Node.js library for handling HTTP requests
 - MySQL - Database
