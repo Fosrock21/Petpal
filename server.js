@@ -4,6 +4,9 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
+// Middleware to parse JSON bodies
+app.use(express.json());
+
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -20,6 +23,15 @@ db.connect((err) => {
         process.exit(1); // Stop the server if we can't connect to the database
     }
     console.log('Connected to database');
+});
+
+
+// Endpoint to handle adding a new pet
+app.post('/add-pet', (req, res) => {
+    const { name, age, breed, type, healthInfo, shelterID } = req.body;
+    const sql = 'INSERT INTO pet (Name, Age, Breed, Type, HealthInfo, ShelterID) VALUES (?, ?, ?, ?, ?, ?)';
+    db.query(sql, [name, age, breed, type, healthInfo, shelterID], (err, result) => {
+    });
 });
 
 // Fetch and display pets

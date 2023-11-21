@@ -39,6 +39,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="locations.html">Locations</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="form.html">Add new pet</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -114,21 +117,32 @@
             // Fetch and display latest application dates
             fetch('/latestApplicationDate')
                 .then(response => response.json())
-                .then(dates => {
+                .then(applications => {
                     const list = document.getElementById('latestApplicationDate');
                     let html = '<table class="table table-striped table-hover">';
-                    html += '<thead class="table-dark"><tr><th>Pet ID</th><th>Pet Name</th><th>Latest Application Date</th></tr></thead><tbody>';
-                    dates.forEach(date => {
-                        let formattedDate = new Date(date.LatestApplicationDate).toLocaleDateString('en-US', {
-                            year: 'numeric', month: 'long', day: 'numeric'
-                        });
-                        html += `<tr><td>${date.PetID}</td><td>${date.Name}</td><td>${formattedDate}</td></tr>`;
+                    html += '<thead class="table-dark"><tr><th>Pet ID</th><th>Name</th><th>Latest Application Date</th></tr></thead><tbody>';
+                    applications.forEach(application => {
+                        const formattedDate = formatDate(application.LatestApplicationDate);
+                        html += `<tr><td>${application.PetID}</td><td>${application.Name}</td><td>${formattedDate}</td></tr>`;
                     });
                     html += '</tbody></table>';
                     list.innerHTML = html;
                 });
         };
+
+        // Function to format date
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString(undefined, options);
+        }
     </script>
+
+    <footer class="footer bg-dark text-white mt-4">
+        <div class="container text-center py-3">
+            <!-- Footer content -->
+        </div>
+    </footer>
+
 </body>
 
 </html>
